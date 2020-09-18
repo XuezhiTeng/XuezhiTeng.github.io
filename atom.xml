@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://xuezhiteng.github.io</id>
+    <title>Xuezhi&apos;s Blog</title>
+    <updated>2020-09-18T09:25:23.750Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://xuezhiteng.github.io"/>
+    <link rel="self" href="https://xuezhiteng.github.io/atom.xml"/>
+    <subtitle>What Starts Here Changes the World</subtitle>
+    <logo>https://xuezhiteng.github.io/images/avatar.png</logo>
+    <icon>https://xuezhiteng.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, Xuezhi&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[VLSI 99题]]></title>
+        <id>https://xuezhiteng.github.io/post/verilog99/</id>
+        <link href="https://xuezhiteng.github.io/post/verilog99/">
+        </link>
+        <updated>2020-09-18T07:18:39.000Z</updated>
+        <summary type="html"><![CDATA[<p>正在更新中......<br>
+题目来源：微信用户“不忘出芯”的<a href="https://mp.weixin.qq.com/s?__biz=MzU2MDUwNzQ1MA==&amp;mid=2247484039&amp;idx=1&amp;sn=3ff96469da6bf012eb3b4f1449bb6543&amp;chksm=fc07bdd2cb7034c4771671d357c2d292ae46d8cd4bbc887ba1a7fbc747d28282599c34d98e50&amp;scene=158#rd">挑战Verilog 99题</a>。但实际上题目内容不仅局限于Verilog，还涉及VLSI各方面的基础知识，故命名为VLSI 99题</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>正在更新中......<br>
+题目来源：微信用户“不忘出芯”的<a href="https://mp.weixin.qq.com/s?__biz=MzU2MDUwNzQ1MA==&amp;mid=2247484039&amp;idx=1&amp;sn=3ff96469da6bf012eb3b4f1449bb6543&amp;chksm=fc07bdd2cb7034c4771671d357c2d292ae46d8cd4bbc887ba1a7fbc747d28282599c34d98e50&amp;scene=158#rd">挑战Verilog 99题</a>。但实际上题目内容不仅局限于Verilog，还涉及VLSI各方面的基础知识，故命名为VLSI 99题</p>
+<!-- more -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"></script>
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E7%94%BB%E5%87%BAcmos%E5%8F%8D%E7%9B%B8%E5%99%A8%E7%9A%84%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E5%9B%BE">1. 画出CMOS反相器的电路原理图。</a></li>
+<li><a href="#2-%E5%8F%8D%E5%90%91%E5%99%A8%E7%9A%84%E9%80%9F%E5%BA%A6%E4%B8%8E%E5%93%AA%E4%BA%9B%E5%9B%A0%E7%B4%A0%E6%9C%89%E5%85%B3%E4%BB%80%E4%B9%88%E6%98%AF%E8%BD%AC%E6%8D%A2%E6%97%B6%E9%97%B4transition-time%E5%92%8C%E4%BC%A0%E6%92%AD%E5%BB%B6%E8%BF%9Fpropagation-delay">2. 反向器的速度与哪些因素有关？什么是转换时间（transition time）和传播延迟（propagation delay）？</a></li>
+<li><a href="#3-%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8Bvihvilvolvohvt">3. 解释一下Vih，Vil，Vol，Voh，Vt</a></li>
+<li><a href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%AC%A6%E5%8F%B7-%E6%95%B0%E5%80%BC%E7%A0%81-%E4%BB%A54bit%E4%B8%BA%E4%BE%8B%E7%BB%99%E5%87%BA%E5%90%84%E8%87%AA%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4">4. 什么是原码，反码，补码，符号-数值码。以4bit为例，给出各自表示的数值范围。</a></li>
+<li><a href="#5-%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81">5. 十进制转换为二进制编码：</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="1-画出cmos反相器的电路原理图">1. 画出CMOS反相器的电路原理图。</h2>
+<figure data-type="image" tabindex="1"><img src="https://xuezhiteng.github.io/post-images/1599379428346.PNG" alt="" loading="lazy"></figure>
+<h2 id="2-反向器的速度与哪些因素有关什么是转换时间transition-time和传播延迟propagation-delay">2. 反向器的速度与哪些因素有关？什么是转换时间（transition time）和传播延迟（propagation delay）？</h2>
+<p>在解答题目的问题之前，不妨先考虑一下：<strong>晶体管的开关速度的影响因素</strong><br>
+如果单从器件角考虑（MOSFET），开关速度的快慢跟饱和电流<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mrow><mi>d</mi><mi>s</mi><mi>a</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">I_{dsat}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>有直接关系，根据饱和区电流公式：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>I</mi><mrow><mi>d</mi><mi>s</mi><mi>a</mi><mi>t</mi></mrow></msub><mo>=</mo><mfrac><mi>β</mi><mn>2</mn></mfrac><msup><mrow><mo fence="true">(</mo><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mi>t</mi></msub><mo fence="true">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">I_{dsat}=\frac{\beta }{2}\left ( V_{gs} - V_{t}\right )^{2}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">s</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.0574399999999997em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05278em;">β</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="minner"><span class="mopen delimcenter" style="top:0em;">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;">)</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954008em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>β</mi><mo>=</mo><mi>μ</mi><msub><mi>C</mi><mrow><mi>o</mi><mi>x</mi></mrow></msub><mfrac><mi>W</mi><mi>L</mi></mfrac></mrow><annotation encoding="application/x-tex">\beta = \mu C_{ox} \frac{W}{L}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="mord mathdefault">μ</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">L</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>可以看出电源电压<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>D</mi><mi>D</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{DD}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 阈值电压<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>t</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 氧化层电容<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mrow><mi>o</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">C_{ox}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, 以及MOS器件的长宽比都有关系。<br>
+<strong>反向器的速度的影响因素</strong><br>
+但是，这道题目问的是<strong>反向器的速度</strong>与哪些因素有关，就不单单是器件层面了。其实这道题目考的是VLSI 1课上讲过的<strong>Transient Response</strong>的内容。也就是求解下图的微分方程：<br>
+<img src="https://xuezhiteng.github.io/post-images/1600340606952.JPG" alt="" loading="lazy"></p>
+<p>但是这个还不是回答这个问题的关键点，因为手算这个微分方程是在是太不engineer了。尽管SPICE模型可以帮我们模拟这个过程，但是我们还是谋求一种更简单、直观的估算方式，也就是RC模型。</p>
+<figure data-type="image" tabindex="2"><img src="https://xuezhiteng.github.io/post-images/1600340958840.JPG" alt="" loading="lazy"></figure>
+<p>除了上面提到的器件层面的因素之外，就是<strong>等效电阻</strong>和<strong>电容</strong>。等效电阻跟Width有关系，而电容则包括三部分：</p>
+<ul>
+<li>Gate Capacitance 跟器件的尺寸有关系</li>
+<li>Diffusion Capacitcance 跟器件的尺寸也有关系，但是跟Layout也有关系</li>
+<li>Wire Capacitance 跟互连线的长度有关系</li>
+</ul>
+<p>举个例子：</p>
+<figure data-type="image" tabindex="3"><img src="https://xuezhiteng.github.io/post-images/1600341921071.JPG" alt="" loading="lazy"></figure>
+<p><strong>Transition Time:</strong><br>
+针对同一个信号，不论它是输入信号还是输出信号，transition time指的都是信号完成低-高（高-低）跳变所需要的时间。<br>
+<strong>Propagation Delay:</strong><br>
+Propagation delay是一个门延迟的概念，一般是指输入信号应该逻辑门的处理之后反应在输出信号的最大延迟，与之对应的最小延迟是contamination delay。</p>
+<h2 id="3-解释一下vihvilvolvohvt">3. 解释一下Vih，Vil，Vol，Voh，Vt</h2>
+<p>跟上一道题不同，这道题考察VLSI所学的DC Response的相关内容，首先说说<strong>DC Transfer Curve</strong>是怎么得到的。<br>
+我们知道，在一个反相器中NMOS和PMOS会根据<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>g</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{gs}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>d</mi><mi>s</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{ds}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的不同而工作在不同的区域，他们映射在反相器上的对应关系是这样的：<br>
+<strong>NMOS</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">截断区</th>
+<th style="text-align:center">线性区</th>
+<th style="text-align:center">饱和区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{in} &lt; V_{tn}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{in} &gt; V_{tn}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{out} &lt; V_{in} -V_{tn}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{in} &gt; V_{tn}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><br><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{out} &gt; V_{in} -V_{tn}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PMOS</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">截断区</th>
+<th style="text-align:center">线性区</th>
+<th style="text-align:center">饱和区</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>D</mi><mi>D</mi></mrow></msub><mo>+</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{in} &gt; V_{DD} + V_{tp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.28055599999999997em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>D</mi><mi>D</mi></mrow></msub><mo>+</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{in} &lt; V_{DD} + V_{tp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.28055599999999997em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mo>&gt;</mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{out} &gt; V_{in} - V_{tp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.28055599999999997em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>D</mi><mi>D</mi></mrow></msub><mo>+</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{in} &lt; V_{DD} + V_{tp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.28055599999999997em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span><br><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>u</mi><mi>t</mi></mrow></msub><mo>&lt;</mo><msub><mi>V</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><mo>−</mo><msub><mi>V</mi><mrow><mi>t</mi><mi>p</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{out} &lt; V_{in} - V_{tp}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">u</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.28055599999999997em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>根据电流相等的原则可以画出这样的图像：<br>
+<img src="https://xuezhiteng.github.io/post-images/1600264670849.JPG" alt="" loading="lazy"><br>
+<img src="https://xuezhiteng.github.io/post-images/1600334493586.JPG" alt="" loading="lazy"><br>
+在上面的DC Transfer Curve中，选择两个斜率为-1的点（斜率其实就是gain）就确定了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{ih}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{il}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{ol}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{oh}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>:</p>
+<ul>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{ih}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：输入电压由高到低变化时，输出电压开始上升且传输特性曲线斜率为-1的点（仍能维持输出为逻辑“1”的最大输入电压）</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>i</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{il}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：输入电压由低到高变化时，输出电压开始下降且传输特性曲线斜率为-1的点（仍能维持输出为逻辑“0”的最小输入电压）</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{ol}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：定义为最小合格高电平。（维持输出为逻辑“1”的最大输出电压）</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mrow><mi>o</mi><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{oh}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：定义为最大合格低电平。（维持输出为逻辑“0”的最大输出电压）</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">V_{t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：阈值电压<br>
+<img src="https://xuezhiteng.github.io/post-images/1600344389700.JPG" alt="" loading="lazy"></li>
+</ul>
+<h2 id="4-什么是原码反码补码符号-数值码-以4bit为例给出各自表示的数值范围">4. 什么是原码，反码，补码，符号-数值码。以4bit为例，给出各自表示的数值范围。</h2>
+<p><strong>原码：符号位+真值，最高位表示符号位。</strong> 以4bit为例：<br>
+[+3]原 = 0011<br>
+[-3]原 = 1011<br>
+表示范围：-7到+7<br>
+原码中0000和1000都表示0。</p>
+<p><strong>反码：正数的反码是它本身，负数的反码将原码除符号位外逐位取反。</strong> 以4bit为例：<br>
+[+3]原 = [0011]原 = [0011]反<br>
+[-3]原 = [1011]原 = [1100]反<br>
+表示范围：-7到+7<br>
+反码中0000和1111都表示0。</p>
+<p><strong>补码：正数的补码是它本身，负数的补码将原码除符号位外逐位取反再加1。</strong> 以4bit为例：<br>
+[+3]原 = [0011]原 = [0011]反 = [0011]补<br>
+[-3]原 = [1011]原 = [1100]反 = [1101]补<br>
+表示范围：-8到+7<br>
+补码中0的表示只有一种形式，即0000，1000表示-8。</p>
+<p>以上是有符号数，对于无符号数来说都是来表示整数，其原码、反码、补码都是其本身。</p>
+<p>更详细解释可参考<a href="https://zh.wikipedia.org/wiki/%E6%9C%89%E7%AC%A6%E8%99%9F%E6%95%B8%E8%99%95%E7%90%86">维基百科</a></p>
+<h2 id="5-十进制转换为二进制编码">5. 十进制转换为二进制编码：</h2>
+<p>127<br>
+-127<br>
+127.375<br>
+-127.375</p>
+<p>整数部分用除法，小数部分用乘法。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Learn Perl 5 By Doing It ]]></title>
+        <id>https://xuezhiteng.github.io/post/perl_note/</id>
+        <link href="https://xuezhiteng.github.io/post/perl_note/">
+        </link>
+        <updated>2020-09-09T02:46:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>Udemy Online Course Learning Notes</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>Udemy Online Course Learning Notes</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li><a href="#lecture-1-hello-world">Lecture #1 Hello World</a></li>
+<li><a href="#lecture-2-downloading-text-and-images-with-perl">Lecture #2 Downloading Text and Images with Perl</a></li>
+<li><a href="#lecture-3-arrays-and-whether-a-file-exists">Lecture #3 Arrays and Whether a File Exists</a></li>
+</ul>
+</p>
+<h1 id="lecture-1-hello-world">Lecture #1 Hello World</h1>
+<p><code>use strict;</code><br>
+#It appears at the head of any perl program. It is used for <em>variable declaration</em>. (kinda force you to declare a variable before using it and prevent you from misspelling it)<br>
+<code>use warnings;</code><br>
+#It also appears at the head of a perl program and is acting with a similar function as the &quot;use strict&quot; statement. (there will be a warning if you violate any restrction)</p>
+<pre><code class="language-perl">sub main {
+    print &quot; Hello World&quot;;  #这里可以加上括号变成(&quot;Hello World&quot;)
+}
+
+main ();
+</code></pre>
+<p>上面的main可以叫其他别的名字(但是上下要保持一致)，而sub代表这是一个sub-routine</p>
+<h1 id="lecture-2-downloading-text-and-images-with-perl">Lecture #2 Downloading Text and Images with Perl</h1>
+<p><code>use LWP::Simple;</code><br>
+#simple procedural interface to LWP, 可以暂时简单理解为一个包含interface的perl package</p>
+<pre><code class="language-perl">use strict;
+use warnings;
+use LWP::Simple;
+
+sub main {
+	print &quot;Downloading...\n&quot;;
+	print get(&quot;http://users.ece.utexas.edu/~patt/&quot;); #Note1
+
+	getstore(&quot;http://users.ece.utexas.edu/~patt/&quot;, &quot;yalepatt.html&quot;);#Note2
+
+
+	my $code = getstore('http://users.ece.utexas.edu/~patt/ph.bright.jpg',
+    &quot;yalepatt.png&quot;);#Note3
+
+	if ($code == 200){ #200 is success code
+		print &quot;Succeed\n&quot;;
+	}
+	else {
+		print &quot;Fail\n&quot;;
+	}
+	
+	print &quot;Finished\n&quot;;
+}
+
+main();
+</code></pre>
+<p><strong>Note:</strong></p>
+<ol>
+<li>这里是将上述网址的html代码获取(get)然后再打印出来(print)</li>
+<li>这里是将上述网址直接保存为一个html文件，逗号后面跟的是保存的名字。值得注意的是，如果该网页有图片的话，是不会显示在这个html打开之后的网页的（除非这个图片就保存在你的本地！）</li>
+<li>这里似乎单引号或者双引号都可以,在perl里，双引号代表里面的字符有特殊含义，而单引号则代表只是单纯的字符而已。这里是将网页上的某张图片保存在本地的方法，图片的链接是在网页上右键获得。getstore这个method是有返回值的，在上面的代码中使用my的方式声明了一个变量$code来存储这个返回值</li>
+</ol>
+<h1 id="lecture-3-arrays-and-whether-a-file-exists">Lecture #3 Arrays and Whether a File Exists</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[同步FIFO设计]]></title>
+        <id>https://xuezhiteng.github.io/post/sync_fifo/</id>
+        <link href="https://xuezhiteng.github.io/post/sync_fifo/">
+        </link>
+        <updated>2020-09-06T05:31:29.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一什么是同步fifo">一：什么是同步FIFO</h2>
+<p><font size=3>FIFO是First-In-Fisrt-Out的缩写。顾名思义，这种缓存机制的特点就是：先进去数据的要先出去（与之类比的堆栈是先进去数据的后出去）。FIFO可以根据<strong>传入的数据是否与传出的数据在同一个时钟域</strong>分为同步FIFO（Synchronous FIFO）和异步FIFO（Asynchronous FIFO）。显然，异步FIFO比同步FIFO要复杂得多，应用地也更为广泛，常常用在两个不同时钟域信号的同步（此处不展开）。而同步FIFO则要简单一些，整个设计只有一个时钟.</font></p>
+<h2 id="二-主要规格">二： 主要规格</h2>
+<ul>
+<li>FIFO的深度、传输数据的宽度均做参数化处理，日后可以当做IP来使用</li>
+<li>读（写）使能信号高电平有效，有效时从FIFO内读出（写入）数据</li>
+<li>使用同步复位，复位信号低电平有效（也可以做异步复位，可以根据需要改变）</li>
+<li>可以根据FIFO当前状态产生空满信号（full/empty），与外部逻辑交互</li>
+<li>假定当FIFO是空（满）状态时，外界不会发来读（写）使能信号。也就是说读（写）使能信号的控制逻辑在FIFO以外完成</li>
+</ul>
+<h2 id="三接口列表">三：接口列表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">端口名称</th>
+<th style="text-align:center">端口属性</th>
+<th style="text-align:center">端口说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">clk</td>
+<td style="text-align:center">input</td>
+<td style="text-align:center">时钟信号</td>
+</tr>
+<tr>
+<td style="text-align:center">rst_n</td>
+<td style="text-align:center">input</td>
+<td style="text-align:center">复位信号，低电平有效</td>
+</tr>
+<tr>
+<td style="text-align:center">wr_en</td>
+<td style="text-align:center">input</td>
+<td style="text-align:center">写使能，高电平有效</td>
+</tr>
+<tr>
+<td style="text-align:center">rd_en</td>
+<td style="text-align:center">input</td>
+<td style="text-align:center">读使能，高电平有效</td>
+</tr>
+<tr>
+<td style="text-align:center">din[N-1:0]</td>
+<td style="text-align:center">input</td>
+<td style="text-align:center">输入数据，N是数据位宽</td>
+</tr>
+<tr>
+<td style="text-align:center">dout[N-1:0]</td>
+<td style="text-align:center">output</td>
+<td style="text-align:center">输出数据，N是数据位宽</td>
+</tr>
+<tr>
+<td style="text-align:center">full</td>
+<td style="text-align:center">output</td>
+<td style="text-align:center">高电平代表FIFO已满</td>
+</tr>
+<tr>
+<td style="text-align:center">empty</td>
+<td style="text-align:center">output</td>
+<td style="text-align:center">高电平代表FIFO已空</td>
+</tr>
+</tbody>
+</table>
+<h2 id="四详细设计">四：详细设计</h2>
+<h3 id="读写指针">读写指针：</h3>
+<p><font size=3>读写指针的作用是：告诉控制逻辑下一个应该被读写的memory cell是哪一个，所以从另一方面来讲，他也可以说是“地址产生器”。读写指针的设计原理十分类似，这里以写指针为例进行说明。</font><br>
+<img src="https://xuezhiteng.github.io/post-images/1599381929688.PNG" alt="" loading="lazy"></p>
+<h3 id="状态计数器">状态计数器：</h3>
+<p><font size=3>状态计数器的作用是记录当前FIFO中有多少数据。根据其特性，我们很容易知道，写入新的数据时该计数器加1，读出数据时该计数器减1，不读不写或者既读又写时，该计数器不变。</font><br>
+<img src="https://xuezhiteng.github.io/post-images/1599393815041.PNG" alt="" loading="lazy"></p>
+<h3 id="空满信号">空满信号：</h3>
+<p><font size=3>空满信号则可以根据st_cnt的状态来确定，组合逻辑即可搞定。</font><br>
+<img src="https://xuezhiteng.github.io/post-images/1599389079614.PNG" alt="" loading="lazy"></p>
+<h3 id="存储单元">存储单元：</h3>
+<p><font size=3>不管是写入还是读取，都需要满足：1)地址正确（读写指针）; 2) 读写使能有效 两个条件才能顺利完成。</font><br>
+<img src="https://xuezhiteng.github.io/post-images/1599392823951.PNG" alt="" loading="lazy"></p>
+<h2 id="五verilog代码">五：Verilog代码</h2>
+<pre><code class="language-verilog">module SYNC_FIFO 
+#(
+parameter	FIFO_DEPTH = 4,
+parameter	ADDR_WIDTH = 2,
+parameter	DATA_WIDTH = 8
+)
+(
+	input 		clk,
+	input 		rst_n,
+	input 		wr_en,
+	input 		rd_en,
+	input 		[DATA_WIDTH-1'b1:0] din,
+	output reg	[DATA_WIDTH-1'b1:0] dout,
+	output reg	full,
+	output reg	empty 
+);
+
+reg [ADDR_WIDTH-1'b1:0] 	wr_ptr;  //write pointer
+reg [ADDR_WIDTH-1'b1:0] 	rd_ptr;	 //read pointer	
+reg [ADDR_WIDTH:0]			st_cnt;  //status counter
+reg [DATA_WIDTH-1'b1:0]		data_ram[FIFO_DEPTH-1'b1:0];  //fifo memory cell
+
+always @ (*) begin 
+	if (st_cnt == FIFO_DEPTH)
+		full = 1'b1;
+	else
+		full = 1'b0;
+end
+
+always @ (*) begin 
+	if (st_cnt == 0)
+		empty = 1'b1;
+	else
+		empty = 1'b0;
+end
+
+always @ (posedge clk) begin
+	if (rst_n == 1'b0)
+		wr_ptr &lt;= {ADDR_WIDTH{1'b0}};
+	else if (wr_en == 1'b1) begin
+		if (wr_ptr == {ADDR_WIDTH{1'b1}})
+			wr_ptr &lt;= {ADDR_WIDTH{1'b0}};
+		else
+			wr_ptr &lt;= wr_ptr + 1'b1;
+	end
+end
+
+always @ (posedge clk) begin
+	if (rst_n == 1'b0)
+		rd_ptr &lt;= {ADDR_WIDTH{1'b0}};
+	else if (rd_en == 1'b1) begin
+		if (rd_ptr == {ADDR_WIDTH{1'b1}})
+			rd_ptr &lt;= {ADDR_WIDTH{1'b0}};
+		else
+			rd_ptr &lt;= rd_ptr + 1'b1;
+	end
+end
+
+always @ (posedge clk) begin
+	if (rst_n == 1'b0)
+		st_cnt &lt;= 0;
+	else if (wr_en == 1'b1 &amp;&amp; rd_en == 1'b0)
+		st_cnt &lt;= st_cnt + 1'b1;
+	else if (wr_en == 1'b0 &amp;&amp; rd_en == 1'b1)
+		st_cnt &lt;= st_cnt - 1'b1;
+	else ;
+end
+
+
+integer i;
+
+always @ (posedge clk) begin
+	if (rst_n == 1'b0) begin
+		for (i=0; i&lt;FIFO_DEPTH; i=i+1) begin
+			data_ram[i] &lt;= {DATA_WIDTH{1'b0}};
+		end
+	end
+	else if (wr_en == 1'b1) begin
+		data_ram[wr_ptr] &lt;= din;
+	end
+	else ;
+end
+
+always @ (posedge clk) begin
+	if (rst_n == 1'b0)
+		dout &lt;= {DATA_WIDTH{1'b0}};
+	else if (rd_en == 1'b1) begin
+		dout &lt;= data_ram[rd_ptr];
+	end
+	else ;
+end
+
+endmodule
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[中式烤羊排]]></title>
+        <id>https://xuezhiteng.github.io/post/zhong-shi-kao-yang-pai/</id>
+        <link href="https://xuezhiteng.github.io/post/zhong-shi-kao-yang-pai/">
+        </link>
+        <updated>2020-08-31T16:50:59.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
+<ul>
+<li>新西兰羊排</li>
+<li>桂皮</li>
+<li>花椒</li>
+<li>孜然粉</li>
+<li>辣椒粉</li>
+</ul>
+<h2 id="制作过程">🍴制作过程：</h2>
+<ol>
+<li>首先将羊排放入冷水中，加入三样调料：<strong>花椒、桂皮、食盐</strong>，煮制30分钟以上，一边煮一边撇去血沫</li>
+<li>将煮好的羊排捞出（用筷子可以插进肉里的程度），然后再表面抹上食盐、孜然粉和辣椒粉，再用小刷子抹上一层食用油，腌制30分钟以上</li>
+<li>将烤箱预热到425℉，将腌制好的羊排全身用锡纸包住，放入烤箱烤30分钟</li>
+<li>然后将羊排取出，拆除锡纸，表面撒上多一点的孜然粉和辣椒粉，400℉再烤15分钟</li>
+<li>烤完即可享用</li>
+</ol>
+<h2 id="总结">👩‍🍳总结：</h2>
+<p><font size=3>如果说之前的TEXAS BBQ主要仰仗于德州秘制BBQ酱料的话，这道烤羊排就完全是一道中式菜肴了。所有的原材料都可以轻松地在任何一家中式厨房里面找到。第一次用锡纸包住烤，保证了羊肉里面的汁水不会流失，而之后的第二次烤制，则确保羊排外表层的酥脆（烤得滋滋冒油的感觉很有食欲！）</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[美国中转荷兰回家记（广州入境）]]></title>
+        <id>https://xuezhiteng.github.io/post/gohome/</id>
+        <link href="https://xuezhiteng.github.io/post/gohome/">
+        </link>
+        <updated>2020-08-31T09:26:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>路线：<br>
+AUS - ATL - AMS - CAN<br>
+航班：<br>
+DL1726 - DL72 - CZ308</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>路线：<br>
+AUS - ATL - AMS - CAN<br>
+航班：<br>
+DL1726 - DL72 - CZ308</p>
+<!-- more -->
+<h2 id="div-aligncenteriframe-frameborderno-border0-marginwidth0-marginheight0-width432-height86-srcmusic163comoutchainplayertype2id5258844auto1height66iframediv"><div align=center><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=432 height=86 src="//music.163.com/outchain/player?type=2&id=5258844&auto=1&height=66"></iframe></div></h2>
+<p><font size=3>先从这些网站了解基本情况：</font></p>
+<ul>
+<li><a href="https://piao.tips/zh/">北美票帝</a></li>
+<li><a href="https://www.uscreditcardguide.com/xinguanyiqingzhixiaruhehuiguo/">北美信用卡指南-回国机票专题</a></li>
+<li>微信公众号: INSIGHT视界（可以查找微信群找组织）</li>
+</ul>
+<h2 id="行程选择">行程选择：</h2>
+<ul>
+<li><strong>首先确定在哪个国家中转</strong><br>
+根据已经回国的朋友说，美国出发荷兰中转是一条非常成熟的航线，而且我又恰好利用同学的注册码抢到了9月4号的南航机票，所以就决定在荷兰中转了。（事后证明这个选择十分明智，因为随着疫情的发展：除了荷兰其他所有申根区国家全部要求9.4出发的旅客提供核酸证明）</li>
+<li><strong>然后确定如何从美国前往荷兰</strong><br>
+据了解：达美航空和荷兰皇家航空执飞的几趟航班是每天都飞荷兰的，而且达美和南航之前同属于天合联盟成员，现在即使南航退出了该联盟，但是行李的直挂协议还是在的，所以就决定乘坐达美航空的航班前往荷兰！</li>
+<li><strong>最后确定美国境内的中转城市</strong><br>
+这里有一个小插曲，一开始我选择的是AUS-DTW-AMS，也就是在底特律中转，这张机票还挺便宜的，而且是最快的，由于航司网站的推荐算法排在了搜索框的第一个，我也就没多想就下单了，而且还多花了几十刀选了个好座位。结果后来越想越不对，中转时间只有74分钟，万一第一趟航班delay一小时，后面的两程我就全都赶不上了。结果在出发前一周左右的时间，我改签到了亚特兰大转机，转机时间变成了6个小时，绰绰有余，就算美国境内的两趟航班全部delay，我还是可以有备选方案赶到荷兰。（因为ATL是达美的大本营，可选航班真的太多了）</li>
+<li><strong>温馨提醒</strong><br>
+不管你选择哪一个城市中转，都要留足转机的时间，以防止中间出现delay的情况，<strong>因为我们购买的是非联程机票</strong>! 万一我们不能按时到达荷兰，执行回国班机的航司是不可能等我们的，也不会给我们安排后续的航班的！</li>
+</ul>
+<h2 id="第一程aus-atl-奥斯汀-亚特兰大">第一程：AUS-ATL 奥斯汀-亚特兰大</h2>
+<p><font size=3>楼主在奥斯汀上学，所以第一程就是从奥斯汀飞到亚特兰大。我的航班是早上8:15起飞的，我五点半起了床，洗漱过后吃了早餐，大约6:10出发去机场，6:45到达机场，直接去办理行李直挂！因为之前听说在ATL或者DTW这种大机场办理行李直挂到中国是非常方便的（这里是指地勤人员业务熟练，不需要过多扯皮），而在某些小城市的机场，达美的地勤不熟悉相关业务，需要找领导argue，甚至有的人直接被拒绝直挂，所以我在出发之前就做好了心理准备：如果无法直挂就把行李让同学带回家，再从长计议。结果直挂出其顺利！地勤先是问我要护照，我说我想直挂，并把南航的行程单给他看，他说可以，然后一言不发地在电脑上一通操作，最后照着屏幕开始念：根据中国政府的要求，所有从美国出发中转以下国家...荷兰....的乘客，需要提供健康码...我一听就说：我知道这事儿，你要看我的健康码吗？他说是滴，我就给他看了，然后他扫了一眼之后，又开始各种操作，最后说：因为某些原因南航的票我现在没法打印出来，就先把达美的这两程机票给你吧。我说好的，然后直挂就完成了！行李托运标牌上赫然写着CAN（广州白云机场），我就知道行李的事情稳了~</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599155584234.jpg" alt="" loading="lazy"><div align=center>完成行李直挂之后跟室友的合照</div></p>
+<p><font size=3>然后经过常规的安检、起飞、降落，我就来到了ATL。亚特兰大晴空万里，天气十分不错。整个机场的人特别少，我在A区，乘坐机场小火车来到F区，A区的人还算比较多，F区的人实在太少了，机场里面的零售店、餐馆和免税店只有10%开门（估计是由于疫情原因都关门歇业了）。由于我到达的时候已经临近中午，我就先吃了个午饭，顺便买了个瓶装水（自来水已经不敢喝了...）</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599156140192.jpg" alt="" loading="lazy"><div align=center>ATL的午餐：鸡肉炒饭</div></p>
+<p><font size=3>吃完饭以后我就找了个可以充电的小桌子，给电脑、手机、耳机疯狂充电了，并默默开始一边写博客，一边慢慢等待，四周都没什么人哈哈哈，还挺有安全感的~</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599156258348.jpg" alt="" loading="lazy"><div align=center>ATL四下无人的机场一角</div></p>
+<h2 id="第二程atl-ams-亚特兰大-阿姆斯特丹">第二程：ATL-AMS 亚特兰大 - 阿姆斯特丹</h2>
+<p><font size=3>在亚特兰大机场等待了大概六个小时之后，我就准备登上去往荷兰的飞机了（DL72），之前担心遇到的出境检查并没有出现，感觉很轻松地就离开美国了。需要注意的是，在登记之前需要填写一个荷兰政府要求的表格（<a href="https://www.government.nl/binaries/government/documents/publications/2020/07/07/information-for-passengers-flying-to-and-from-the-netherlands/Traveller+public+health+declaration.pdf">healthy form</a>），没有打印的小伙伴并不需要担心，因为达美的工作人员会在登机之前发放，你只需要自己带好一支笔就可以了。填完了健康表格，就拿着健康表格刷脸登记（刷脸的时候需要短暂地摘下口罩，没啥大问题），然后就顺利上飞机了。</p>
+<p>温馨提醒：</font></p>
+<ul>
+<li>上飞机之前最好再来一次健康码，免除后顾之忧。</li>
+<li>飞机上的空调还是挺猛的，最好穿一件长袖。</li>
+<li>飞机上人不多，我自己一个人就占了一整排座位，非常爽。</li>
+</ul>
+<p><font size=3>在飞机上还会有乘务员再次确认你是否已经填写了荷兰方面要求的健康表格，所以真的不用担心，如果你没有写，乘务员还会再发给你纸质的健康表格供你填写。</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599396783826.jpg" alt="" loading="lazy"><div align=center>ATL晴朗的天空</div></p>
+<p><font size=3>经过了七个小时左右的飞行，我终于顺利来到了荷兰，到达荷兰时是早上六点多，荷兰的天气灰蒙蒙的，感觉刚刚下过雨，气温也不是很高，总之就是很舒适的样子。由于距离南航的航班起飞还有五个多小时，所以这段停留依然是非常的悠闲，但是需要提醒大家的一点是：荷兰的电源插座跟美国和中国都不一样，所以在荷兰的机场是没有办法给电子设备充电的，大家在玩手机或者玩电脑的时候要注意一下，不要把电给玩儿没了。</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599397336827.jpg" alt="" loading="lazy"><div align=center>航班已经落地AMS</div></p>
+<p><font size=3>在AMS我主要做了这么几件事，带*号代表所有读者都需要完成的，请特别注意！</font></p>
+<h3 id="一-吃饭">一、吃饭</h3>
+<p><font size=3>人是铁，饭是钢，所以下飞机第一件事就是就是找地方吃饭，不知道是因为落地时间太早还是因为疫情的原因，可供选择的参订实在不多，我走了几百米就只找到一家吃汉堡的地方，荷兰是欧元区，但是可以换算成美元支付，故不需要担心支付方式的问题，我点了一份汉堡+薯条，吃得很饱~</font></p>
+<figure data-type="image" tabindex="1"><img src="https://xuezhiteng.github.io/post-images/1599434830149.jpg" alt="" loading="lazy"></figure>
+<div align=center>AMS机场快餐（有点小贵><）</div>
+<h3 id="二-打印机票">二、打印机票</h3>
+<p><font size=3>出于某些未知的原因，从奥斯汀出发时，达美的工作人员无法帮我打印最后一程南航的机票（我感觉是因为我买的不是联程机票）。所以到达荷兰之后，我需要先把南航的机票打印出来，在前往打印之前，转机群有朋友告诉我，我要到T6航站楼，找到自助打印机打印机票，但事实情况没有那么麻烦（因为T6距离南航的登机口还是蛮远的），只需要找到一个就近的自助打印机器就好了，不用非得跑到T6去。</font></p>
+<h3 id="三-完成海关健康申报">三、完成海关健康申报*</h3>
+<p><font size=3>微信搜索“海关旅客指尖服务”，开始“出/入境健康申报”，这个就是南航工作人员口中的“红码”，全部填写完成之后，会出现一个二维码，记得截图保存。不用担心会不会填错，这个码真正被用到的时候是进入中国海关的时候，到那时会有专门的工作人员帮你核验、修改~</font></p>
+<h3 id="四-防疫健康码国际版">四、防疫健康码国际版*</h3>
+<p><font size=3>微信搜索“防疫健康码国际版”，由于我是不需要核酸码的，所以我只需要维持我的“小飞机码”有效就可以了</font></p>
+<h3 id="五-人工验票">五、人工验票*</h3>
+<p><font size=3>在距离登机还有一个多小时的时候，就会有南航的工作人员开始验票，查验的就是“红码”截图和“小飞机码”。这里的查验不是很严格，工作人员只是确定你两个码都是有效的就可以了，然后TA就会在你的机票上写一个OK的字样，完成以上过程以后，恭喜你，等待登机即可啦！</font></p>
+<h3 id="六-测量体温登机">六、测量体温登机*</h3>
+<p><font size=3>最后一步，就是登上回国的飞机，此时身处荷兰已经完全没有socail distancing，所有的同胞紧密地挨在一起排队检票，检票之后就上了登上飞机的通道，通道里面会有人拿着额温枪测量你的体温，一般都没有啥问题的，如果实在担心可以提前准备一些酒精棉片，然后在测温之前在额头上擦一擦。完成了以上所有的步骤，我终于进入了CZ308的客舱。</font></p>
+<h2 id="第三程ams-can-阿姆斯特丹-广州">第三程：AMS - CAN 阿姆斯特丹 - 广州</h2>
+<p><font size=3>第三程的航行将近11个小时，已经飞过了两程的我，体力和精力已经到了极限，最后真的是靠意志力在支撑。最后一趟航班，如果可以选座的话，建议选一个舒适宽敞的座位，因为最后一段航程确实非常煎熬，要不是心里一直想着祖国就在眼前，真的有点支撑不住了...<br>
+<strong>关于CZ308的一些Fast Facts: （其他航班不一定适用，仅作参考!）</strong></font></p>
+<h3 id="一-座位">一、座位</h3>
+<p><font size=3>所有美国境内出发的航班，已经取消连坐的选项，也就是说左右两边的座位永远是空着的，但是在CZ308上面就不是这样了，因为回国的班机太少而想要回国的人又太多，所以每一个座位上都是有人的，因此在飞机上的防护还是要做得更周到一些，比如口罩手套护目镜什么的，建议都准备好。</font></p>
+<h3 id="二-服务">二、服务</h3>
+<p><font size=3>所有的空乘人员都是全副武装，而且不像平时会在机舱内来回走动提供服务，这里的空乘人员几乎是不走动的，只会每隔几个小时测量机内所有人员的体温。如果你需要帮助的话，请按服务铃吧~</font></p>
+<h3 id="三-餐食">三、餐食</h3>
+<p><font size=3>由于几乎没有服务，所以机上也没有提供热饭热菜这类的餐食，但是祖国还是准备了很多零食来让你填饱肚子，保证你不会因为太饿而身体虚弱，零食的量还是挺多的，十几个小时的飞行我几乎把零食都吃完了...里面还有两瓶水和两瓶奶，应该也不会渴到。</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599439635161.jpg" alt="" loading="lazy"><div align=center>几乎被清空的机上零食包</div></p>
+<h3 id="四-体验">四、体验</h3>
+<p><font size=3>可能是由于机型是A380的缘故，也有可能是机长的驾驶技术太棒，整趟航程一点都没有摇晃的感觉，感觉飞得很稳，这不禁让我想起一月份回美国的那趟AA，太让人害怕了...可能这就是差距吧！<br>
+还有一个明显的感觉就是：冷！大家一定要多穿衣服，因为飞机上面真的很冷！</font></p>
+<h2 id="最后一步落地">最后一步：落地</h2>
+<p><font size=3>经过了漫长的飞行，终于到达了广州白云机场，到达机场以后，等待我们的将是一系列隔离措施，且听我一一道来：</font></p>
+<h3 id="一-核酸检测">一、核酸检测</h3>
+<p><strong>花费时间：一个小时左右</strong><br>
+<font size=3>飞机落地以后，一出舱门就有工作人员在你的护照上贴一个号码，然后乘坐接驳车来到航站楼内部一个专门用于核酸检测的区域，等待叫号。被叫到以后，来到一个一对一的窗口，工作人员会再次检查之前提到过的“红码”，如果你有填写不当的地方，工作人员会帮助你修改然后重新生成，然后再测量一次体温，并在你的护照上贴一个二维码。然后领取试管，前往采样区采样。采样过程：<strong>喉咙捅两下，鼻孔捅一下</strong>。拿着你的试管，扫你的二维码将样品上交之后，采样就算完成了。</font></p>
+<h3 id="二-过海关提取行李">二、过海关+提取行李</h3>
+<p><strong>花费时间：一个小时左右</strong><br>
+<font size=3>核酸检测做完以后，又乘坐接驳车，来到中国海关。没有什么特殊的检测，就是拿着你的护照，通过海关就好了，海关工作人员会问你：从哪里来，经过了哪些国家，在广州隔离结束后准备去哪里，之类的问题，如实回答就好了~过了海关就到了行李转盘，找到自己的行李然后通过离开机场就可以了。我只有一件托运行李，所以还是挺顺利的。</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599440832240.jpg" alt="" loading="lazy"><div align=center>排队等待过海关</div></p>
+<h3 id="三-前往隔离酒店">三、前往隔离酒店</h3>
+<p><strong>花费时间：一个半小时左右</strong><br>
+<font size=3>出了机场，就会有工作人员带你上大巴车，载着你前往隔离酒店，我到达乘车点的时候发现好多人并不急于上车，而是坐在椅子上等待，可能是他们听到内部消息说目前的这一批酒店条件不咋地，不愿意上车吧...工作人员也不会禁止这种行为，毕竟你想等就等呗...但是对我来说，我已经又累又饿，完全不在乎隔离酒店是好是坏，所有就在工作人员的指引下直接上车了。上车前工作人员会要求你更换上他们提供的口罩，可能是担心交叉感染吧...汽车大概行驶了一个半小时，我们来到了广州市荔湾区的一家酒店，酒店条件一般，就是如家的标准吧，<strong>可以自己点外卖、可以收快递</strong>，我没有什么特殊要求，住得还是挺满意的。各位看官如果想看更全面的广州隔离酒店测评的话，可以去小红书搜索“广州 隔离酒店”就会有好多了~行李在进入酒店之前会被喷洒消毒，我之前做了准备，将贵物品和衣物包裹了起来，但是最后打开行李发现并没有湿，有备无患啦！</font></p>
+<p><img src="https://xuezhiteng.github.io/post-images/1599440860174.jpg" alt="" loading="lazy"><div align=center>按兵不动 vs. 行色匆匆</div></p>
+<h3 id="四-隔离日常">四、隔离日常</h3>
+<ul>
+<li>到达广州的第二天下午就得知了核酸检测的阴性结果</li>
+<li>每天三餐，有人会送到你的房间门口，味道满意（我不挑食）</li>
+<li>每天上午九点和下午三点由医护人员给你测量体温</li>
+<li>网上买的快递只收不退，会跟餐食一起送到门口</li>
+<li>每个酒店都会有自己的医疗群和服务群，有需要在里面提就可以了</li>
+</ul>
+<p><font size=3><em>写到这里就差不多更完了，之后想起什么再写吧~历尽波折但是又很幸运，我终于回到祖国怀抱啦！希望所有想回国的朋友都顺顺利利！</em></font></p>
+<p><a href="https://xuezhiteng.github.io/post/about">关于作者</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[腐竹肉片]]></title>
+        <id>https://xuezhiteng.github.io/post/fu-zhu-rou-pian/</id>
+        <link href="https://xuezhiteng.github.io/post/fu-zhu-rou-pian/">
+        </link>
+        <updated>2020-08-31T08:16:56.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
+<ul>
+<li>干腐竹</li>
+<li>小葱</li>
+<li>小米辣</li>
+<li>里脊肉</li>
+<li>大蒜</li>
+</ul>
+<h2 id="制作过程">🍴制作过程：</h2>
+<ol>
+<li>将里脊肉切成薄片，然后加入适量的<strong>酱油、料酒、盐、淀粉</strong>腌制30分钟</li>
+<li>小葱切段，小米辣和大蒜切碎备用</li>
+<li>将干腐竹用温水泡发30分钟左右，然后切段</li>
+<li>锅中倒油将猪肉片炒熟后盛出备用。</li>
+<li>锅中再次倒油，放入蒜末和小米辣爆香后同时加入猪肉和腐竹，翻炒1分钟左右</li>
+<li>加入一圈生抽提味，少量老抽上色，然后锅中加水，淹没过菜的一少半</li>
+<li>中小火焖制5-10分钟，然后加入葱段，炒至断生，撒一点食盐，收汁装盘即可</li>
+</ol>
+<h2 id="总结">👩‍🍳总结：</h2>
+<p><font size=3>第一次尝试腐竹肉片，我给自己打八十五分，味道还是不错的，非常下饭，主要说说几点不足：</p>
+<ul>
+<li>葱的量有点少，建议在原材料用料方面，小葱 : 腐竹 = 1:1这样色彩更好看，蔬菜量更合理</li>
+<li>猪肉炒的有点老，口感发硬，可以缩短炒猪肉片的时间</li>
+<li>稍微有点咸，可能是最后出锅之前加的盐太多了</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[糖醋鱼]]></title>
+        <id>https://xuezhiteng.github.io/post/tang-cu-yu/</id>
+        <link href="https://xuezhiteng.github.io/post/tang-cu-yu/">
+        </link>
+        <updated>2020-08-29T02:49:37.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
+<ul>
+<li>黄花鱼</li>
+<li>葱</li>
+<li>香菜</li>
+<li>各种厨房常见调味品（详见下文）</li>
+</ul>
+<h2 id="制作过程">🍴制作过程：</h2>
+<ol>
+<li>将黄花鱼去除内脏和鳞片，清理干净，然后用少许盐腌制1小时</li>
+<li>将鱼的表面均匀地裹上淀粉</li>
+<li>锅中倒入一指深的花生油，将鱼放入煎至两面金黄捞出</li>
+<li>调制糖醋汁：<strong>少量水，一勺酱油，两勺糖，一勺米醋，一勺料酒，少量淀粉</strong>。不要放盐！不然会太咸了。</li>
+<li>将葱叶切成葱花备用，葱白切丝，下锅爆香后捞出。</li>
+<li>锅留底油，放入酱汁和炸好的鱼，将糖醋汁淋满鱼的全身，翻炒几下即可出锅</li>
+<li>摆盘：鱼放在盘中 -&gt;放上葱丝 -&gt; 淋上酱汁 -&gt; 撒上葱花和香菜</li>
+</ol>
+<h2 id="总结">👩‍🍳总结：</h2>
+<p><font size=3>一道酸甜口味的菜，特别适合经过冷冻的不那么新鲜的鱼。在煎鱼的时候可以火候稍微大一些，这样既可以保证鱼肉熟透，而且还能防止口感软化，吃起来比较酥脆。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[UT Austin 毕业留念]]></title>
+        <id>https://xuezhiteng.github.io/post/ut_memo/</id>
+        <link href="https://xuezhiteng.github.io/post/ut_memo/">
+        </link>
+        <updated>2020-08-23T11:29:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>2020.8.23 在学校拍的一些照片</p>
+<p>摄影师：Bo Zou<br>
+模特：Yi Zheng &amp; Me</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>2020.8.23 在学校拍的一些照片</p>
+<p>摄影师：Bo Zou<br>
+模特：Yi Zheng &amp; Me</p>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="https://xuezhiteng.github.io/post-images/1600415943354.jpg" alt="" loading="lazy"></figure>
+<div align=center>新商学院的门口</div>
+<figure data-type="image" tabindex="2"><img src="https://xuezhiteng.github.io/post-images/1600416020394.jpg" alt="" loading="lazy"></figure>
+<div align=center>UT Tower</div>
+<figure data-type="image" tabindex="3"><img src="https://xuezhiteng.github.io/post-images/1600416029925.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://xuezhiteng.github.io/post-images/1600416055991.jpg" alt="" loading="lazy"></figure>
+<div align=center>白房子</div>
+<figure data-type="image" tabindex="5"><img src="https://xuezhiteng.github.io/post-images/1600416094729.jpg" alt="" loading="lazy"></figure>
+<div align=center>EER进门的大厅</div>
+<figure data-type="image" tabindex="6"><img src="https://xuezhiteng.github.io/post-images/1600416152749.jpg" alt="" loading="lazy"></figure>
+<div align=center>EER自习的桌子</div>
+<figure data-type="image" tabindex="7"><img src="https://xuezhiteng.github.io/post-images/1600416113443.jpg" alt="" loading="lazy"></figure>
+<div align=center>ECJ的魔幻洗手间</div>
+<figure data-type="image" tabindex="8"><img src="https://xuezhiteng.github.io/post-images/1600416125979.jpg" alt="" loading="lazy"></figure>
+<div align=center>COOP门口</div>
+<figure data-type="image" tabindex="9"><img src="https://xuezhiteng.github.io/post-images/1600416100642.jpg" alt="" loading="lazy"></figure>
+<div align=center>ECJ教室旁边的小桌子</div>
+<figure data-type="image" tabindex="10"><img src="https://xuezhiteng.github.io/post-images/1600416290610.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://xuezhiteng.github.io/post-images/1600416300176.jpg" alt="" loading="lazy"></figure>
+<div align=center>EER正门</div>
+<figure data-type="image" tabindex="12"><img src="https://xuezhiteng.github.io/post-images/1599464680857.jpg" alt="" loading="lazy"></figure>
+<div align=center>大蓝门门口</div>
+<figure data-type="image" tabindex="13"><img src="https://xuezhiteng.github.io/post-images/1599464717239.jpg" alt="" loading="lazy"></figure>
+<div align=center>The Union</div>
+<figure data-type="image" tabindex="14"><img src="https://xuezhiteng.github.io/post-images/1599465298475.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://xuezhiteng.github.io/post-images/1600416402577.jpg" alt="" loading="lazy"></figure>
+<div align=center>我毕业啦</div>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[手撕包菜]]></title>
+        <id>https://xuezhiteng.github.io/post/shou-si-bao-cai/</id>
+        <link href="https://xuezhiteng.github.io/post/shou-si-bao-cai/">
+        </link>
+        <updated>2020-08-23T07:44:13.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
+<ul>
+<li>包菜（卷心菜/圆白菜）</li>
+<li>五花肉</li>
+<li>大蒜</li>
+<li>生姜</li>
+<li>花椒</li>
+<li>干辣椒</li>
+<li>老干妈</li>
+</ul>
+<h2 id="制作过程">🍴制作过程：</h2>
+<ol>
+<li>将包菜用手撕成合适大小，注意一定不要用刀切，不然就没内味了</li>
+<li>包菜清洗一下一定要沥干水分，越干越好，也可以去除外面几层之后，直接不洗</li>
+<li>将五花肉切薄片，锅内倒油开始煸炒（要用中火慢慢煸，把喷香的猪油煸出来）</li>
+<li>煸至五花肉变得表面金黄，将肉捞出，锅中留油，放葱、姜、花椒、干辣椒段爆香</li>
+<li>放入包菜翻炒5分钟，然后加一圈生抽，一勺蚝油</li>
+<li>继续翻炒五分钟，加入一点点食盐</li>
+<li>最后放入一勺灵魂老干妈辣酱，收汁装盘</li>
+</ol>
+<h2 id="总结">👩‍🍳总结：</h2>
+<p><font size=3>又是一道快手小菜，制作过程非常简单，但是特别下饭。需要注意的是，包菜这种蔬菜，不同于白菜，很难下水，刚下锅炒的时候，一定要勤翻炒，不然容易糊锅，而且一定要有耐心：不要觉得锅快干了就往锅里面加水，这道菜一定不要加水！不然就没有包菜的爽脆口感了，最后的成品是有汤的~耐心等待包菜出水就可以了</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TEXAS BBQ]]></title>
+        <id>https://xuezhiteng.github.io/post/texas-bbq/</id>
+        <link href="https://xuezhiteng.github.io/post/texas-bbq/">
+        </link>
+        <updated>2020-08-21T09:08:07.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
+<ul>
+<li>白洋葱</li>
+<li>啤酒</li>
+<li>土豆</li>
+<li>猪排</li>
+<li>蜂蜜</li>
+<li>苹果</li>
+<li>HEB的<a href="https://www.heb.com/product-detail/true-texas-bbq-sweet-tx-heat-rub/3881587">烧烤腌制料</a></li>
+</ul>
+<h2 id="制作过程">🍴制作过程：</h2>
+<ol>
+<li>将猪排焯水，其中加入苹果和啤酒，可以增香并且去除猪肉的腥味</li>
+<li>焯水过程中去除血沫，再用中火煮20分钟</li>
+<li>将煮好的猪排捞出控水，然后加入TEXAS烤肉酱料和少许盐腌制30分钟</li>
+<li>将腌好的猪排+土豆+白洋葱放在烤盘中，<strong>再用锡纸将烤盘密封起来</strong></li>
+<li>烤箱预热，温度设置为425°F，烤制50分钟</li>
+<li>将TEXAS烤肉酱料+蜂蜜+少许油混合成刷料，烤制完成后，刷在猪排和其他配菜上面</li>
+<li>再放入烤箱，温度设置为400°F，烤制10分钟</li>
+</ol>
+<h2 id="总结">👩‍🍳总结：</h2>
+<p><font size=3>得益于产自德州本地的烧烤酱料，猪排十分入味，而且由于前期的蜜蜂烤制，保证了猪排内部的水分没有被烤干，外面的一层又稍微干一些，口感很丰富，细细品味，还能尝出蜂蜜和苹果的香气。再配上德州当地的啤酒，真是美滋滋！</p>
+]]></content>
+    </entry>
+</feed>
