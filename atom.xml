@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuezhiteng.github.io</id>
     <title>Xuezhi&apos;s Blog</title>
-    <updated>2020-09-20T10:30:15.508Z</updated>
+    <updated>2020-09-20T13:53:13.117Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuezhiteng.github.io"/>
     <link rel="self" href="https://xuezhiteng.github.io/atom.xml"/>
@@ -11,7 +11,19 @@
     <icon>https://xuezhiteng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Xuezhi&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[VLSI 99题]]></title>
+        <title type="html"><![CDATA[现代都市，活力羊城——广州四日游]]></title>
+        <id>https://xuezhiteng.github.io/post/trip_guangzhou/</id>
+        <link href="https://xuezhiteng.github.io/post/trip_guangzhou/">
+        </link>
+        <updated>2020-09-20T10:40:27.000Z</updated>
+        <summary type="html"><![CDATA[<p>隔离结束后在广州四天的自由行...感受世界一线城市的魅力🏙</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>隔离结束后在广州四天的自由行...感受世界一线城市的魅力🏙</p>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VLSI 99题（1~10）]]></title>
         <id>https://xuezhiteng.github.io/post/verilog99/</id>
         <link href="https://xuezhiteng.github.io/post/verilog99/">
         </link>
@@ -32,6 +44,11 @@
 <li><a href="#3-%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8Bvihvilvolvohvt">3. 解释一下Vih，Vil，Vol，Voh，Vt</a></li>
 <li><a href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81%E7%AC%A6%E5%8F%B7-%E6%95%B0%E5%80%BC%E7%A0%81-%E4%BB%A54bit%E4%B8%BA%E4%BE%8B%E7%BB%99%E5%87%BA%E5%90%84%E8%87%AA%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%95%B0%E5%80%BC%E8%8C%83%E5%9B%B4">4. 什么是原码，反码，补码，符号-数值码。以4bit为例，给出各自表示的数值范围。</a></li>
 <li><a href="#5-%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%BC%96%E7%A0%81">5. 十进制转换为二进制编码：</a></li>
+<li><a href="#6-%E7%94%BB%E5%87%BAcmos%E4%B8%89%E6%80%81%E7%BC%93%E5%86%B2%E5%99%A8%E7%9A%84%E7%94%B5%E8%B7%AF%E5%8E%9F%E7%90%86%E5%9B%BE%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E9%AB%98%E9%98%BB%E6%80%81">6. 画出CMOS三态缓冲器的电路原理图，解释一下高阻态。</a></li>
+<li><a href="#7-%E4%BB%80%E4%B9%88%E6%98%AFopen-drain-output">7. 什么是open-drain output？</a></li>
+<li><a href="#8-%E5%8F%AA%E7%94%A82%E8%BE%93%E5%85%A5mux%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%88%96%E9%9D%9E%E5%BC%82%E6%88%96">8. 只用2输入mux，实现与，或，非，异或。</a></li>
+<li><a href="#9-%E7%9B%B8%E5%90%8C%E9%9D%A2%E7%A7%AF%E7%9A%84cmos%E4%B8%8E%E9%9D%9E%E9%97%A8%E5%92%8C%E6%88%96%E9%9D%9E%E9%97%A8%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%BF%AB">9. 相同面积的cmos与非门和或非门哪个更快？</a></li>
+<li><a href="#%E8%AF%B4%E6%98%8E%E4%BB%A3%E7%A0%81%E4%B8%ADw1%E5%92%8C-w2%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%9A%84%E5%85%B7%E4%BD%93%E5%8C%BA%E5%88%AB">说明代码中w1和 w2对应电路的具体区别:</a></li>
 </ul>
 </li>
 </ul>
@@ -140,6 +157,70 @@ Propagation delay是一个门延迟的概念，一般是指输入信号应该逻
 -127 = 1111_1111<br>
 127.375 = 0111_1111.011<br>
 -127.375 = 1111_1111.011</p>
+<h2 id="6-画出cmos三态缓冲器的电路原理图解释一下高阻态">6. 画出CMOS三态缓冲器的电路原理图，解释一下高阻态。</h2>
+<p>先解释高阻态：高阻态一般用字母Z来表示，它既不是高电平也不是低电平，我理解为一种floating的状态。如果高阻态输入了下一级电路，对下一级电路是没有任何影响的。<br>
+在SoC中，一般使用总线来实现各个模块和CPU之间的交流，而挂在总线上的各个模块，在同一时刻只能有一个来驱动总线（不然的话就乱套了！）。所以其他不驱动的模块最好是输出高阻态。为了实现这一目的，常用的方法就是使用三态门（Tri-State）再配合一个使能信号。</p>
+<p><strong>三态门的真值表</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">EN</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span></span>/<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mrow><mi>E</mi><mi>N</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{EN}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0/1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">Z</td>
+</tr>
+<tr>
+<td style="text-align:center">0/1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Z</td>
+</tr>
+<tr>
+<td style="text-align:center">1/0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1/0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>为实现上面的真值表最简单的方式就是Transmission Gate，但是TG也有响应的缺点：Nonrestoring. 也就是说输入端的噪声会不加处理地到达输出端，这对于数字电路的稳定性和准确性是不利的。另外几个TG连续出现而造成的延时是相当可观的。</p>
+<figure data-type="image" tabindex="4"><img src="https://xuezhiteng.github.io/post-images/1600604415778.JPG" alt="" loading="lazy"></figure>
+<p>另一个办法：Tristate Inverter.<br>
+<img src="https://xuezhiteng.github.io/post-images/1600604680520.JPG" alt="" loading="lazy"></p>
+<p><em><strong>补充说明</strong></em>：当我们使用三态门进行总线驱动控制时，没有被使能的三态门会处于一个floating状态（一个无效的逻辑电平），但依然浪费了能量；而且当芯片规模加大，很难使得不同的使能信号完全同步，一旦不同步则又会在总线上出现contention的情况，所以现在Deisgn Engineer更喜欢用MUX来解决问题。</p>
+<h2 id="7-什么是open-drain-output">7. 什么是open-drain output？</h2>
+<p>本题不会。通过查阅<a href="https://forum.digikey.com/t/what-does-open-drain-mean/716">网上资料</a>之后总结：</p>
+<p>CMOS漏极开路门（Open-Drain Gate），又称漏极开路输出（open-drain output），简称OD门。各种CMOS门电路都可构成漏极开路门，下图为CMOS与非OD门的电路结构。F=(AB)'</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2019/04/25/5cc1ccb296f99.png" alt="" loading="lazy"></figure>
+<p>漏极开路OD门电路内的输出MOS管漏极是开路的，应用时，需要通过外接电阻（Extension resistance）接电源。与TTL集成的OC门类似，CMOS集成的OD门也可实现线与（Wired and）连接。</p>
+<h2 id="8-只用2输入mux实现与或非异或">8. 只用2输入mux，实现与，或，非，异或。</h2>
+<p>2输入mux定义为：<br>
+<code>o = s ? a : b;</code></p>
+<p>AND:<br>
+<code>Y = A ? 0 : B;</code></p>
+<p>OR:<br>
+<code>Y = A ? B : 1;</code></p>
+<p>NOT:<br>
+<code>Y = A ? 1 : 0;</code></p>
+<p>XOR:<br>
+<code>Y = A ? B : ~B;</code></p>
+<h2 id="9-相同面积的cmos与非门和或非门哪个更快">9. 相同面积的cmos与非门和或非门哪个更快？</h2>
+<p><img src="https://xuezhiteng.github.io/post-images/1600608770507.JPG" alt="" loading="lazy"><br>
+从图中的第一行可以清楚地看出，NAND需要8个单位的面积，而NOR需要十个单位的面积。在面积相同的情况下，NAND将会更快一些。</p>
+<h2 id="说明代码中w1和-w2对应电路的具体区别">说明代码中w1和 w2对应电路的具体区别:</h2>
+<pre><code class="language-verilog">wire [2:0] val; 
+wire w1 = val &gt; 0; 
+wire w2 = val &gt;= 0;
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -648,36 +729,6 @@ DL1726 - DL72 - CZ308</p>
 </ol>
 <h2 id="总结">👩‍🍳总结：</h2>
 <p><font size=3>又是一道快手小菜，制作过程非常简单，但是特别下饭。需要注意的是，包菜这种蔬菜，不同于白菜，很难下水，刚下锅炒的时候，一定要勤翻炒，不然容易糊锅，而且一定要有耐心：不要觉得锅快干了就往锅里面加水，这道菜一定不要加水！不然就没有包菜的爽脆口感了，最后的成品是有汤的~耐心等待包菜出水就可以了</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[TEXAS BBQ]]></title>
-        <id>https://xuezhiteng.github.io/post/texas-bbq/</id>
-        <link href="https://xuezhiteng.github.io/post/texas-bbq/">
-        </link>
-        <updated>2020-08-21T09:08:07.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
-<ul>
-<li>白洋葱</li>
-<li>啤酒</li>
-<li>土豆</li>
-<li>猪排</li>
-<li>蜂蜜</li>
-<li>苹果</li>
-<li>HEB的<a href="https://www.heb.com/product-detail/true-texas-bbq-sweet-tx-heat-rub/3881587">烧烤腌制料</a></li>
-</ul>
-<h2 id="制作过程">🍴制作过程：</h2>
-<ol>
-<li>将猪排焯水，其中加入苹果和啤酒，可以增香并且去除猪肉的腥味</li>
-<li>焯水过程中去除血沫，再用中火煮20分钟</li>
-<li>将煮好的猪排捞出控水，然后加入TEXAS烤肉酱料和少许盐腌制30分钟</li>
-<li>将腌好的猪排+土豆+白洋葱放在烤盘中，<strong>再用锡纸将烤盘密封起来</strong></li>
-<li>烤箱预热，温度设置为425°F，烤制50分钟</li>
-<li>将TEXAS烤肉酱料+蜂蜜+少许油混合成刷料，烤制完成后，刷在猪排和其他配菜上面</li>
-<li>再放入烤箱，温度设置为400°F，烤制10分钟</li>
-</ol>
-<h2 id="总结">👩‍🍳总结：</h2>
-<p><font size=3>得益于产自德州本地的烧烤酱料，猪排十分入味，而且由于前期的蜜蜂烤制，保证了猪排内部的水分没有被烤干，外面的一层又稍微干一些，口感很丰富，细细品味，还能尝出蜂蜜和苹果的香气。再配上德州当地的啤酒，真是美滋滋！</p>
 ]]></content>
     </entry>
 </feed>
