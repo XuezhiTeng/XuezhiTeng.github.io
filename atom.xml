@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuezhiteng.github.io</id>
     <title>Xuezhi&apos;s Blog</title>
-    <updated>2020-09-20T15:13:44.179Z</updated>
+    <updated>2020-09-21T03:46:39.174Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuezhiteng.github.io"/>
     <link rel="self" href="https://xuezhiteng.github.io/atom.xml"/>
@@ -48,7 +48,7 @@
 <li><a href="#7-%E4%BB%80%E4%B9%88%E6%98%AFopen-drain-output">7. 什么是open-drain output？</a></li>
 <li><a href="#8-%E5%8F%AA%E7%94%A82%E8%BE%93%E5%85%A5mux%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%88%96%E9%9D%9E%E5%BC%82%E6%88%96">8. 只用2输入mux，实现与，或，非，异或。</a></li>
 <li><a href="#9-%E7%9B%B8%E5%90%8C%E9%9D%A2%E7%A7%AF%E7%9A%84cmos%E4%B8%8E%E9%9D%9E%E9%97%A8%E5%92%8C%E6%88%96%E9%9D%9E%E9%97%A8%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%BF%AB">9. 相同面积的cmos与非门和或非门哪个更快？</a></li>
-<li><a href="#%E8%AF%B4%E6%98%8E%E4%BB%A3%E7%A0%81%E4%B8%ADw1%E5%92%8C-w2%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%9A%84%E5%85%B7%E4%BD%93%E5%8C%BA%E5%88%AB">说明代码中w1和 w2对应电路的具体区别:</a></li>
+<li><a href="#10-%E8%AF%B4%E6%98%8E%E4%BB%A3%E7%A0%81%E4%B8%ADw1%E5%92%8C-w2%E5%AF%B9%E5%BA%94%E7%94%B5%E8%B7%AF%E7%9A%84%E5%85%B7%E4%BD%93%E5%8C%BA%E5%88%AB">10. 说明代码中w1和 w2对应电路的具体区别:</a></li>
 </ul>
 </li>
 </ul>
@@ -216,7 +216,7 @@ Propagation delay是一个门延迟的概念，一般是指输入信号应该逻
 <h2 id="9-相同面积的cmos与非门和或非门哪个更快">9. 相同面积的cmos与非门和或非门哪个更快？</h2>
 <p><img src="https://xuezhiteng.github.io/post-images/1600608770507.JPG" alt="" loading="lazy"><br>
 从图中的第一行可以清楚地看出，NAND需要8个单位的面积，而NOR需要十个单位的面积。在面积相同的情况下，NAND将会更快一些。</p>
-<h2 id="说明代码中w1和-w2对应电路的具体区别">说明代码中w1和 w2对应电路的具体区别:</h2>
+<h2 id="10-说明代码中w1和-w2对应电路的具体区别">10. 说明代码中w1和 w2对应电路的具体区别:</h2>
 <pre><code class="language-verilog">wire [2:0] val; 
 wire w1 = val &gt; 0; 
 wire w2 = val &gt;= 0;
