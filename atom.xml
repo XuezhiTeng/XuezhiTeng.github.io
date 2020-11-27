@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuezhiteng.github.io</id>
     <title>Xuezhi&apos;s Blog</title>
-    <updated>2020-10-03T14:24:06.086Z</updated>
+    <updated>2020-11-27T14:08:37.221Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuezhiteng.github.io"/>
     <link rel="self" href="https://xuezhiteng.github.io/atom.xml"/>
@@ -10,6 +10,43 @@
     <logo>https://xuezhiteng.github.io/images/avatar.png</logo>
     <icon>https://xuezhiteng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Xuezhi&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[豆角排骨焖面]]></title>
+        <id>https://xuezhiteng.github.io/post/menmian/</id>
+        <link href="https://xuezhiteng.github.io/post/menmian/">
+        </link>
+        <updated>2020-11-27T13:49:21.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
+<ul>
+<li>豆角</li>
+<li>排骨</li>
+<li>土豆</li>
+<li>中等粗细的手擀面</li>
+<li>西红柿</li>
+<li>葱姜蒜</li>
+<li>八角</li>
+</ul>
+<h2 id="制作过程">🍴制作过程：</h2>
+<ol>
+<li>将排骨切成小段，冷水下锅，加入料酒和生姜片焯水去腥</li>
+<li>热锅冷油下葱姜蒜爆香，放入焯水完毕的排骨，加一点酱油和八角，翻炒几分钟炒出香味</li>
+<li>豆角切成3-4厘米的小段，土豆切成细条</li>
+<li>锅内放入切好的豆角和土豆，继续翻炒两分钟</li>
+<li>锅中倒入没过全部食材的开水，加入两圈生抽，一圈老抽和适量的食盐</li>
+<li>大火烧开锅中的水后，转小火炖煮20分钟</li>
+<li>将西红柿切成块，放入锅中（西红柿的作用有两个：1. 点缀颜色（红色）；2. 丰富味道（酸））</li>
+<li>再往锅中加点水（确保水面和食材平齐），将手擀面平铺在食材的最上面，转最小火煮10分钟即可</li>
+</ol>
+<h2 id="总结">👩‍🍳总结：</h2>
+<ol>
+<li>盐可以稍微多放一点，因为炖肉排骨是很吃盐的</li>
+<li>豆角和排骨的量大概在1:1比较合适，这是排骨稍微多了点儿 &gt;&lt;</li>
+<li>整体是咸鲜口味，加入西红柿之后味道更佳丰富了</li>
+<li>放入面条之后焖的过程中，要注意把控火候，不然很容易糊锅，要保证国内的水量，因为面条也吸水</li>
+<li>成品中土豆已编程土豆泥附着在面条的表面，我喜欢这种口感；如果想吃囫囵的土豆，可以在第6的过程中再加土豆哦~</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[现代都市，活力羊城——广州五日游（已完结）]]></title>
         <id>https://xuezhiteng.github.io/post/trip_guangzhou/</id>
@@ -941,35 +978,5 @@ DL1726 - DL72 - CZ308</p>
 <figure data-type="image" tabindex="14"><img src="https://xuezhiteng.github.io/post-images/1599465298475.jpg" alt="" loading="lazy"></figure>
 <figure data-type="image" tabindex="15"><img src="https://xuezhiteng.github.io/post-images/1600416402577.jpg" alt="" loading="lazy"></figure>
 <div align=center>我毕业啦</div>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[手撕包菜]]></title>
-        <id>https://xuezhiteng.github.io/post/shou-si-bao-cai/</id>
-        <link href="https://xuezhiteng.github.io/post/shou-si-bao-cai/">
-        </link>
-        <updated>2020-08-23T07:44:13.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="原料">🥗原料：</h2>
-<ul>
-<li>包菜（卷心菜/圆白菜）</li>
-<li>五花肉</li>
-<li>大蒜</li>
-<li>生姜</li>
-<li>花椒</li>
-<li>干辣椒</li>
-<li>老干妈</li>
-</ul>
-<h2 id="制作过程">🍴制作过程：</h2>
-<ol>
-<li>将包菜用手撕成合适大小，注意一定不要用刀切，不然就没内味了</li>
-<li>包菜清洗一下一定要沥干水分，越干越好，也可以去除外面几层之后，直接不洗</li>
-<li>将五花肉切薄片，锅内倒油开始煸炒（要用中火慢慢煸，把喷香的猪油煸出来）</li>
-<li>煸至五花肉变得表面金黄，将肉捞出，锅中留油，放葱、姜、花椒、干辣椒段爆香</li>
-<li>放入包菜翻炒5分钟，然后加一圈生抽，一勺蚝油</li>
-<li>继续翻炒五分钟，加入一点点食盐</li>
-<li>最后放入一勺灵魂老干妈辣酱，收汁装盘</li>
-</ol>
-<h2 id="总结">👩‍🍳总结：</h2>
-<p><font size=3>又是一道快手小菜，制作过程非常简单，但是特别下饭。需要注意的是，包菜这种蔬菜，不同于白菜，很难下水，刚下锅炒的时候，一定要勤翻炒，不然容易糊锅，而且一定要有耐心：不要觉得锅快干了就往锅里面加水，这道菜一定不要加水！不然就没有包菜的爽脆口感了，最后的成品是有汤的~耐心等待包菜出水就可以了</p>
-]]></content>
     </entry>
 </feed>
